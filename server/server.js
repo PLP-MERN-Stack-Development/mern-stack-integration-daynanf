@@ -6,7 +6,7 @@ const path = require('path');
 
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
-const postRoutes = require('./routes/posts');
+const postRoutes = require('./routes/post');
 
 const app = express();
 app.use(helmet());

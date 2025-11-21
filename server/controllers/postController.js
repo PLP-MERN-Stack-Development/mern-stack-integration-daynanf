@@ -7,7 +7,7 @@ const createPost = async (req, res) => {
     const image = req.file ? `/uploads/${req.file.filename}` : undefined;
 
     const post = await Post.create({
-      title, content, author: req.user._id, image, tags: tags ? tags.split(',').map(t=>t.trim()) : []
+      title, content, author: req.user._id, image, tags: tags ? tags.split(',').map(t => t.trim()) : []
     });
     res.status(201).json(post);
   } catch (err) {
@@ -59,7 +59,7 @@ const updatePost = async (req, res) => {
     if (req.file) post.image = `/uploads/${req.file.filename}`;
     if (title) post.title = title;
     if (content) post.content = content;
-    if (tags) post.tags = tags.split(',').map(t=>t.trim());
+    if (tags) post.tags = tags.split(',').map(t => t.trim());
 
     await post.save();
     res.json(post);
@@ -76,7 +76,7 @@ const deletePost = async (req, res) => {
     if (!post) return res.status(404).json({ message: 'Not found' });
     if (!post.author.equals(req.user._id)) return res.status(403).json({ message: 'Forbidden' });
 
-    await post.remove();
+    await post.deleteOne();
     res.json({ message: 'Deleted' });
   } catch (err) {
     console.error(err);

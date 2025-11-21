@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 export const request = async (method, path, body = null, token = null) => {
   const headers = { 'Content-Type': 'application/json' };
@@ -9,7 +9,7 @@ export const request = async (method, path, body = null, token = null) => {
 
   const res = await fetch(`${API_BASE}${path}`, options);
   if (!res.ok) {
-    const err = await res.json().catch(()=>({ message: res.statusText }));
+    const err = await res.json().catch(() => ({ message: res.statusText }));
     throw new Error(err.message || 'API error');
   }
   return res.json();
