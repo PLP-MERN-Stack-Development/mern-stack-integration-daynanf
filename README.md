@@ -1,78 +1,40 @@
-# MERN Stack Integration Assignment
+# MERN Blog — Submission
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+## Overview
+A full-stack MERN blog application demonstrating:
+- Express + MongoDB REST API
+- React front-end (Vite) styled with Tailwind CSS
+- JWT authentication (register/login)
+- Full CRUD for posts, image uploads, comments
+- Protected routes and role-based actions (author-only update/delete)
 
-## Assignment Overview
+## Setup
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+### Server
+1. `cd server`
+2. `cp .env.example .env` and set `MONGO_URI` and `JWT_SECRET`
+3. `npm install`
+4. `npm run dev` (runs nodemon on port 5000)
 
-## Project Structure
+### Client
+1. `cd client`
+2. `npm install`
+3. `npm run dev` (Vite dev server)
 
-```
-mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+## Usage
+- Register a user (POST `/api/auth/register`), then login to receive a token.
+- Use the token in `Authorization: Bearer <token>` for protected endpoints (create/update/delete posts, comment).
 
-## Getting Started
+## Notes
+- Images stored locally in `server/uploads` for dev. See `server/middleware/upload.js`.
+- To use S3: configure `multer-s3` and environment AWS variables (instructions in docs).
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+## Screenshots
+Add screenshots of the running app and MongoDB Compass / Atlas.
 
-## Files Included
-
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
-
-## Requirements
-
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
-
-## Submission
-
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
-
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
-
-## Resources
-
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+## Grading checklist
+- [x] REST API endpoints implemented
+- [x] React components and hooks used
+- [x] Auth implemented (JWT)
+- [x] Image upload implemented
+- [x] Comments implemented
